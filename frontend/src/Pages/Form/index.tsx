@@ -1,4 +1,4 @@
-const Form = () => {
+const Form = () => {  
   const movie = {
     id: 1,
     image:
@@ -7,7 +7,6 @@ const Form = () => {
     count: 2,
     score: 4.5,
   };
-
   return (
     <div>
       <div className="dsmovie-form-container">
@@ -41,5 +40,4 @@ const Form = () => {
     </div>
   );
 };
-
 export default Form;
