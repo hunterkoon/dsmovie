@@ -1,4 +1,5 @@
-const Form = () => {  
+import "./styles.css"
+const Form = () => {
   const movie = {
     id: 1,
     image:
@@ -10,9 +11,9 @@ const Form = () => {
   return (
     <div>
       <div className="dsmovie-form-container">
-        <img className="dsmovie-movie-card-image" src="url" alt="The Witcher" />
+        <img className="dsmovie-movie-card-image" src={movie.image} alt={movie.title} />
         <div className="dsmovie-card-bottom-container">
-          <h3>"The Witcher"</h3>
+          <h3>{movie.title}</h3>
           <form className="dsmovie-form">
             <div className="form-group dsmovie-form-group">
               <label htmlFor="email">Informe seu email</label>
