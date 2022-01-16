@@ -1,22 +1,46 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { Movie } from "constants/types";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "utils/requests";
 import "./styles.css";
 
-type Props = {movieId : string};
+type Props = { movieId: string };
 
-const FormCard = ({movieId} : Props ) => {
+const FormCard = ({ movieId }: Props) => {
 
-const [movie , setMovie] = useState<Movie>(); 
-useEffect(()=>{
-  axios.get(`${BASE_URL}/movies/${movieId}`).then(response => {
-    setMovie(response.data)
-  })
-},[movieId])
+  const navigate = useNavigate();
+  const [movie, setMovie] = useState<Movie>();
+  useEffect(() => {
+    axios.get(`${BASE_URL}/movies/${movieId}`).then((response) => {
+      setMovie(response.data);
+    });
+  }, [movieId]);
 
-   return (
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const email = (event.target as any).email.value;
+    const score = (event.target as any).score.value;
+
+    const config: AxiosRequestConfig = {
+      baseURL: BASE_URL,
+      method: "PUT",
+      url: "/scores",
+      data: {
+        email: email,
+        movieId: movieId,
+        score: score,
+      },
+    };
+    
+    if ( email !== null) {
+      axios(config).then(response => {
+        navigate('/');
+      })
+    }
+  };
+
+  return (
     <div>
       <div className="dsmovie-form-container">
         <img
@@ -26,10 +50,15 @@ useEffect(()=>{
         />
         <div className="dsmovie-card-bottom-container">
           <h3>{movie?.title}</h3>
-          <form className="dsmovie-form">
+          <form className="dsmovie-form" onSubmit={handleSubmit}>
             <div className="form-group dsmovie-form-group">
               <label htmlFor="email">Informe seu email</label>
-              <input type="email" className="form-control" id="email" />
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                required={true}
+              />
             </div>
             <div className="form-group dsmovie-form-group">
               <label htmlFor="score">Informe sua avaliação</label>
