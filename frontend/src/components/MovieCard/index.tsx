@@ -1,8 +1,13 @@
 import MovieScore from "components/MovieScore";
-import { movie } from "constants/movie";
+import { Movie } from "constants/types";
 import { Link } from "react-router-dom";
 
-const MovieCard = () => {
+
+type Props = {
+movie : Movie;
+}
+
+const MovieCard = ({movie} : Props) => {
   return (
     <div>
       <img
