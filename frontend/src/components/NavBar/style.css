@@ -14,8 +14,9 @@ header {
 }
 
 .dsmovie-nav-content h1 {
-margin: 0;
-font-weight: bold;
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
 }
 
 .dsmovie-img-github {
@@ -29,7 +30,7 @@ font-weight: bold;
 
 .dsmovie-contact-container p {
     color: #fff;
-    margin: 0;
-    margin-left: 10px;
+    margin: 0 0 0 10px;
     font-size: 12px;
+
 }

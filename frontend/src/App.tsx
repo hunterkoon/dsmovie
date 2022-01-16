@@ -3,9 +3,9 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import Listing from './Pages/Listing';
-import Form from './Pages/Form';
-import Navbar from "./components/NavBar";
+import Listing from 'Pages/Listing';
+import Form from 'Pages/Form';
+import Navbar from "components/NavBar";
 
 function App() {
   return (
@@ -20,5 +20,4 @@ function App() {
     </BrowserRouter>
   );
 }
-
 export default App;
